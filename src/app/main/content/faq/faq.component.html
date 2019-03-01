@@ -1,0 +1,25 @@
+<div class="container">
+  <!--Grid row-->
+  <div class="row">
+    <!--Grid column-->
+    <div class="col-md-12 text-center my-5 wow fadeIn" data-wow-delay="0.1s">
+      <h2 class="h1 font-bold mb-5">Часто задаваемые вопросы</h2>
+      <!--Accordion wrapper-->
+      <mdb-accordion [multiple]="false" aria-multiselectable="true">
+        <mdb-accordion-item [collapsed]="true" *ngFor="let item of itemsFaqQuestions">
+          <mdb-accordion-item-head
+            [customClass]="'white pink-text z-depth-1 border-0 mb-1'"
+            >{{ item.question }}</mdb-accordion-item-head
+          >
+          <mdb-accordion-item-body
+            [customClass]="'pt-3 mb-1 grey lighten-3 z-depth-1'"
+            >{{ item.answer }}</mdb-accordion-item-body
+          >
+        </mdb-accordion-item>
+      </mdb-accordion>
+      <!--/.Accordion wrapper-->
+    </div>
+    <!--Grid column-->
+  </div>
+  <!--Grid row-->
+</div>

@@ -1,0 +1,19 @@
+.view-page {
+  background: url("../../../assets/second.jpg") no-repeat center center;
+  background-size: cover;
+  height: 100vh;
+  /* Fallback for browsers that do not support Custom Properties */
+  height: calc(var(--vh, 1vh) * 100);
+}
+
+.font-caveat {
+  font-family: 'Caveat', cursive !important;
+}
+
+.toggle-scroll {
+  bottom: 0;
+}
+
+.instagram {
+  margin-bottom: 15%;
+}

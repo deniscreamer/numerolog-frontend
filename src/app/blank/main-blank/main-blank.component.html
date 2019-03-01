@@ -1,0 +1,27 @@
+<div
+  class="row justify-content-center p-3 div-center"
+>
+  <div *ngIf="!isFree" class="alert alert-danger text-center mt-3">
+    Выбранное время уже занято<br />
+  </div>
+  <div *ngIf="!category && isFree" class="alert alert-success text-center mt-3">
+    Выберете необходимую консультацию
+  </div>
+  <div *ngIf="isFree" class="container mb-3">
+    <div class="row justify-content-center">
+      <div class="col-12 col-xs-8 col-md-8 col-lg-8 col-lg-8">
+        <div class="list-group text-center">
+          <a class="list-group-item list-group-item-action" routerLink="1"
+            >Предназначение</a
+          >
+          <a class="list-group-item list-group-item-action" routerLink="2"
+            >Взаимоотношения</a
+          >
+          <a class="list-group-item list-group-item-action" routerLink="3"
+            >Счастливый ребёнок</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,75 @@
+<div class="container-fluid">
+  <!--Grid row-->
+  <div class="row justify-content-center">
+    <!--Grid column-->
+    <div class="col-md-12 text-center text-center">
+      <h2
+        class="h1 mb-5 mt-5 text-center dark-grey-text font-weight-bold wow fadeIn"
+      >
+        Отзывы моих клиентов
+      </h2>
+      <!--Carousel Wrapper-->
+      <mdb-carousel
+        [isControls]="true"
+        [colorStyle]="'pink lighten-3'"
+        class="carousel-multi-item multi-animation"
+        [type]="'carousel-multi-item'"
+        [animation]="'slide'"
+        [interval]="'0'"
+        data-wow-delay="0.2s"
+      >
+        <mdb-carousel-item
+          *ngFor="let item of slides; let k = index"
+          class="pl-2 pr-2"
+        >
+          <div class="row justify-content-center">
+            <div
+              class="col col-sm-6 col-lg-4 col-xl-3 py-2"
+              *ngFor="let feedback of item; let i = index"
+            >
+              <a
+                ><img
+                  (click)="onOpen(feedback)"
+                  class="z-depth-1 modal-hover mx-auto"
+                  style="max-width: 200px; height: auto;"
+                  [src]="'../../../../assets/feedback/' + feedback.src"
+              /></a>
+            </div>
+          </div>
+        </mdb-carousel-item>
+      </mdb-carousel>
+      <!--/.Carousel Wrapper-->
+      <!-- Create Modals. All is invisible items from feedbacks -->
+      <div
+        *ngFor="let feedback of feedbacks; let i = index"
+        mdbModal
+        class="modal fade"
+      >
+        <div class="modal-dialog modal-sm" role="document">
+          <!--Content-->
+          <div class="modal-content">
+            <!--Body-->
+            <div class="modal-body mb-0 p-0">
+              <img
+                class="img-fluid"
+                [src]="'../../../../assets/feedback/' + feedback.src"
+              />
+            </div>
+            <div class="modal-close mx-auto">
+              <button type="button" mdbBtn color="dark" (click)="onClose(i)">
+                Закрыть
+              </button>
+            </div>
+          </div>
+          <!--/.Content-->
+        </div>
+      </div>
+      <!-- /.Create Modals. All is invisible items from feedbacks -->
+      <p class="text-center w-responsive mx-auto grey-text">
+        Нажмите на отзыв чтобы его увеличить и прочитать
+      </p>
+    </div>
+    <!--Grid column-->
+  </div>
+  <!--Grid row-->
+</div>

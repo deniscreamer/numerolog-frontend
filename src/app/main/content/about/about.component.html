@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="row">
+    <!--Section: About-->
+    <section class="mb-3">
+      <!--Secion heading-->
+      <h2
+        class="text-center mb-5 my-5 dark-grey-text font-weight-bold wow fadeIn"
+        data-wow-duration="1s"
+        data-wow-delay="0s"
+      >
+        Обо мне
+      </h2>
+
+      <!--First row-->
+      <div class="container-fluid">
+        <!--First column-->
+        <div class="row justify-content-between justify-content-center">
+          <div
+            class="d-flex col-sm-12 col-md-6 col-lg-6 mb-5 wow slideInLeft"
+            data-wow-duration="1s"
+            data-wow-delay="0s"
+          >
+          <div class="about-text">
+            <!--Title-->
+            <h4 class=" mb-4">{{ aboutContent.profession }}</h4>
+
+            <!--Description-->
+            <p class="grey-text-2 p-3" align="justify">
+              {{ aboutContent.about }}
+            </p>
+          </div>
+          </div>
+          <!--/First column-->
+
+          <!--Second column-->
+          <div
+            class="col-sm-12 col-md-6 col-lg-6 mb-5 wow slideInRight"
+            data-wow-duration="1s"
+            data-wow-delay="0s"
+            style="min-height: 300px;"
+          >
+            <!--Image-->
+            <img
+              [src]="aboutContent.src ? aboutContent.src : ''"
+              class="about-img img-fluid z-depth-1 rounded"
+              alt="My photo"
+            />
+          </div>
+          <!--/Second column-->
+        </div>
+      </div>
+      <!--/First row-->
+    </section>
+    <!--/Section: About-->
+  </div>
+</div>

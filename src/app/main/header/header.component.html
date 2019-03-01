@@ -1,0 +1,86 @@
+<header class="h-100" id="home">
+  <mdb-navbar
+    #navbar
+    SideClass="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar intro-fixed-nav rgba-black-light"
+    [containerInside]="false"
+  >
+    <mdb-navbar-brand>
+      <a class="logo navbar-brand" href="#">
+        <strong>@numerolog_valeria</strong>
+      </a>
+    </mdb-navbar-brand>
+    <links>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active waves-light" mdbWavesEffect>
+          <a class="nav-link" (click)="onScrollTo('home')"
+            ><i class="fa fa-home"></i> <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li *ngFor="let item of menuItems" class="nav-item waves-light" mdbWavesEffect>
+            <a class="nav-link" (click)="onScrollTo(item.id)">{{ item.name }}</a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav ml-auto nav-flex-icons">
+        <li class="nav-item">
+          <a class="nav-link waves-effect waves-light"
+          href="https://api.whatsapp.com/send?phone=79384850885" target="_blank">
+            <i class="fab fa-whatsapp fa-2x"></i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link waves-effect waves-light"
+          href="https://www.instagram.com/numerolog_valeria/" target="_blank">
+            <i class="fab fa-instagram fa-2x"></i>
+          </a>
+        </li>
+      </ul>
+    </links>
+  </mdb-navbar>
+  <!-- First Main -->
+  <div class="view view-page intro" parallax [config]="parallaxConfig">
+    <div class="full-bg-img">
+      <div class="mask flex-center">
+        <div class="container text-center">
+          <div
+            class="wow fadeInDown"
+            data-wow-duration="2.5s"
+            data-wow-delay="0.5s"
+          >
+            <h1 class="display-3 font-weight-bold mt-3 red-text">
+              {{ homeContent.name }}
+            </h1>
+            <h3 class="font-caveat display-4 mt-4">{{ homeContent.quote }}</h3>
+          </div>
+
+          <div
+            class="wow fadeInUpBig"
+            data-wow-duration="1s"
+            data-wow-delay="1.5s"
+          >
+            <button
+              mdbBtn
+              class="mt-5 wow fadeInUpBig"
+              type="button"
+              color="danger"
+              outline="true"
+              mdbWavesEffect
+              (click)="onScrollTo('order')"
+            >
+              <i class="fa fa-calendar-alt mr-1"></i>{{ homeContent.button }}
+            </button>
+          </div>
+        </div>
+        <div
+          class="position-absolute toggle-scroll wow fadeInUpBig"
+          [ngClass]="{ instagram: detectInstagramBrowser() }"
+          data-wow-duration="0.7s"
+          data-wow-delay="2.2s"
+        >
+          <i class="fa fa-angle-down fa-2x wow bounce infinite"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /.First Main -->
+</header>

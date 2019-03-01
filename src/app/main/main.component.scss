@@ -1,0 +1,131 @@
+@import "../../../projects/ng-uikit-pro-standard/src/lib/assets/scss/bootstrap/bootstrap.scss";
+@import "../../../projects/ng-uikit-pro-standard/src/lib/assets/scss/mdb.scss";
+@import "../../../projects/ng-uikit-pro-standard/src/lib/assets/scss/bootstrap/mixins";
+@import "../../../projects/ng-uikit-pro-standard/src/lib/assets/scss/bootstrap/functions";
+@import "../../../projects/ng-uikit-pro-standard/src/lib/assets/scss/bootstrap/variables";
+
+.view.mask {
+  overflow: auto !important;
+}
+
+.md-accordion {
+  .card {
+      border-bottom: 0 !important;
+  }
+}
+
+.p-m-clear {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.control-center {
+  padding-right: 0 !important;
+  margin: auto 0 !important;
+}
+
+.my-order-info {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.row-p-inherit {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  padding-top: 1.25rem;
+}
+
+.question-order {
+  width: 35px;
+  height: 35px;
+}
+
+.question-order-i {
+  line-height: 35px;
+}
+
+.list-group-item.disabled,
+.list-group-item:disabled {
+  background-color: red;
+  color: #fff;
+}
+
+.legend {
+  height: 50px;
+  line-height: 50px;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.legend-free {
+  background: #fff;
+}
+
+.legend-order {
+  background: red;
+  color: #fff;
+}
+
+.modal-close {
+  position: absolute;
+  width: inherit;
+  top: 0;
+}
+
+.modal-hover:hover {
+  opacity: 0.8;
+}
+
+.btn-floating {
+  margin: 0;
+}
+
+@keyframes myFadeIn {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 0.8;
+  }
+}
+
+.myFadeIn {
+  -webkit-animation-name: myFadeIn;
+  animation-name: myFadeIn;
+}
+
+.myFadeInStatic {
+  opacity: 0.8;
+}
+
+@include media-breakpoint-up(lg) {
+  html {
+      font-size: 1rem;
+  }
+}
+
+@include media-breakpoint-down(lg) {
+html {
+    font-size: 0.98rem;
+}
+}
+
+@include media-breakpoint-down(md) {
+html {
+    font-size: 0.95rem;
+}
+}
+
+@include media-breakpoint-down(sm) {
+html {
+    font-size: 0.9rem;
+}
+
+.display-3 {
+  font-size: 3.5rem;
+}
+
+.display-4 {
+  font-size: 2.2rem;
+}
+}

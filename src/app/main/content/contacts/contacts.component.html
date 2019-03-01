@@ -1,0 +1,129 @@
+<div class="container-fluid" style="background-color: #fff4fd;">
+  <div class="container">
+    <!--Section: Contact v.2-->
+    <section class="section mt-5 pb-5 pt-2 wow fadeIn" data-wow-delay="0.2s">
+      <!-- Section heading -->
+      <h3
+        class="text-center my-2 mt-5 pt-3 pb-0 dark-grey-text font-weight-bold"
+      >
+        <strong>Связаться со мной</strong>
+      </h3>
+      <!--Section description-->
+      <p class="text-center w-responsive mx-auto my-5 grey-text">
+        Если у вас имеются дополнительные вопросы, пожалуйста, обращайтесь ко
+        мне лично через форму ниже, либо через соц. сети
+      </p>
+
+      <div class="row">
+        <!--Grid column-->
+        <div class="col-md-8 col-xl-9">
+          <form (ngSubmit)="onSubmit(formContact)" #formContact="ngForm">
+            <!--Grid row-->
+            <div class="row">
+              <!--Grid column-->
+              <div class="col-md-6">
+                <div class="md-form">
+                  <div class="md-form">
+                    <input
+                      type="text"
+                      id="contact-name"
+                      class="form-control"
+                      mdbInputDirective
+                      required
+                      ngModel
+                      name="username"
+                    />
+                    <label for="contact-name" class="">Ваше имя</label>
+                  </div>
+                </div>
+              </div>
+              <!--Grid column-->
+
+              <!--Grid column-->
+              <div class="col-md-6">
+                <div class="md-form">
+                  <div class="md-form">
+                    <input
+                      type="text"
+                      id="contact-email"
+                      class="form-control"
+                      mdbInputDirective
+                      required
+                      email
+                      ngModel
+                      name="email"
+                    />
+                    <label for="contact-email" class="">Ваш e-mail</label>
+                  </div>
+                </div>
+              </div>
+              <!--Grid column-->
+            </div>
+            <!--Grid row-->
+
+            <!--Grid row-->
+            <div class="row">
+              <!--Grid column-->
+              <div class="col-md-12">
+                <div class="md-form">
+                  <textarea
+                    type="text"
+                    id="contact-message"
+                    class="md-textarea form-control"
+                    rows="3"
+                    mdbInputDirective
+                    required
+                    ngModel
+                    name="question"
+                  ></textarea>
+                  <label for="contact-message">Ваш вопрос</label>
+                </div>
+              </div>
+            </div>
+            <!--Grid row-->
+            <div class="text-center text-md-right mb-3">
+              <button class="btn btn-pink btn-rounded waves-effect waves-light" type="submit"
+              [disabled]="!formContact.valid"
+                >Отправить</button
+              >
+            </div>
+          </form>
+
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-md-4 col-xl-3">
+          <ul class="text-center list-unstyled mt-4">
+            <li>
+              <a
+                [href]="contacts.instagram ? contacts.instagram.src : ''"
+                target="_blank"
+              >
+                <i class="fab fa-instagram fa-2x mb-1 pink-text"></i>
+                <p><u class="text-dark">{{ contacts.instagram.name }}</u></p>
+              </a>
+            </li>
+
+            <li>
+              <a
+                [href]="contacts.whatsapp ? contacts.whatsapp.src : ''"
+                target="_blank"
+              >
+                <i class="fab fa-whatsapp fa-2x pink-text mb-1"></i>
+                <p><u class="text-dark">{{ contacts.whatsapp.name }}</u></p>
+              </a>
+            </li>
+
+            <li>
+              <i class="fa fa-envelope fa-2x pink-text mb-1"></i>
+              <p>{{ contacts.email }}</p>
+            </li>
+          </ul>
+        </div>
+        <!--Grid column-->
+      </div>
+    </section>
+    <!--Section: Contact v.2-->
+  </div>
+</div>

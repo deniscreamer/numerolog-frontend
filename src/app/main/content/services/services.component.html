@@ -1,0 +1,73 @@
+<!-- Services container -->
+<div class="container">
+  <!-- Section About -->
+  <section id="specials" class="section feature-box text-center mt-0 mb-5">
+    <!-- Section title -->
+    <h2
+      class="section-heading text-center mb-5 text-uppercase font-weight-bold wow fadeIn"
+      data-wow-duration="1s"
+      data-wow-delay="0s"
+    >
+      Услуги
+    </h2>
+    <!-- First row -->
+    <div class="row">
+      <!-- Service-->
+      <div
+        *ngFor="let service of services; let i = index"
+        class="col-md-6 col-lg-3 mb-5 wow bounceIn"
+        data-wow-duration="1s"
+        data-wow-delay="0.25s"
+      >
+        <!--Panel-->
+        <div
+        [class]="'card card-body hoverable ' + service.color + ' lighten-3'"
+        >
+          <div class="my-order-info container">
+            <div class="row row-p-inherit justify-content-center">
+              <div class="col-12 p-0">
+                <div
+                  [mdbTooltip]="service.description"
+                  placement="bottom"
+                  triggers="hover:click:touchstart"
+                  container="body"
+                >
+                  <div
+                    class="rounded-circle info-color question-order justify-content-center"
+                  >
+                    <i
+                      class="fa fa-question text-white align-middle question-order-i"
+                    ></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <i
+            [class]="service.ico + ' fa-3x mb-4 mt-3 white-text'"
+            aria-hidden="true"
+          ></i>
+          <h5 class="feature-title white-text text-uppercase">
+            {{ service.title }}
+          </h5>
+          <button
+            mdbBtn
+            class="m-0 mt-3 bg-white text-dark pl-md-2 pr-md-2"
+            type="button"
+            color="link"
+            outline="true"
+            mdbWavesEffect
+            (click)="onOrderService(i)"
+          >
+            Заказать <i class="fa fa-shopping-cart"></i> {{ service.price }}
+          </button>
+        </div>
+        <!--/.Panel-->
+      </div>
+      <!-- ./AService-->
+    </div>
+    <!-- /.First row -->
+  </section>
+  <!-- /.Second section -->
+</div>
+<!-- /Services container -->

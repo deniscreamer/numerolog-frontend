@@ -1,0 +1,156 @@
+<!-- Consultations -->
+<div class="container-fluid" style="background-color: #fff;">
+  <div class="container">
+    <!-- Consultations section -->
+    <section class="section extra-margins text-center pb-0 pt-1 mb-0">
+      <!-- Section title -->
+      <h2
+        class="section-heading text-center mb-5 text-uppercase font-weight-bold mt-5 wow fadeIn"
+        data-wow-duration="1s"
+        data-wow-delay="0s"
+      >
+        {{ titleConsultations }}
+      </h2>
+      <!-- ROW -->
+      <div class="row mb-3">
+        <!--First column-->
+        <ng-container *ngFor="let consultation of consultations; let i = index">
+          <div
+            [class]="'col-lg-4 col-md-12 mb-5 ' + consultation.animation"
+            data-wow-duration="1s"
+            data-wow-delay="0s"
+          >
+            <!--Card-->
+            <mdb-card cascade="true" narrower="true">
+              <!--Card image-->
+              <div class="view-cascade overlay" mdbWavesEffect>
+                <mdb-card-img
+                  [src]="'../../../../assets/' + consultation.img"
+                ></mdb-card-img>
+                <div class="mask rgba-stylish-strong"></div>
+              </div>
+              <!--/Card image-->
+              <mdb-card-body cascade="true" class="text-center">
+                <!--Card content-->
+
+                <!--Title-->
+                <h4 class="card-title pink-text">
+                  {{ consultation.title }}
+                </h4>
+                <!--Text-->
+
+                <!-- description -->
+                <div class="container-fluid">
+                  <div class="row justify-content-md-center align-items-center">
+                    <div class="col col-md-12 list-group pr-0">
+                      <!-- description items -->
+                      <div
+                        *ngFor="
+                          let itemDescription of consultation.itemsDescription
+                        "
+                        class="list-group-item list-group-item-action waves-light"
+                      >
+                        <div class="row p-0 pr-3 pl-3">
+                          <div class="container-fluid">
+                            <div class="row">
+                              <div
+                                class="col-1 d-flex justify-content-center p-0 my-auto"
+                              >
+                                <i class="fa fa-check text-danger"></i>
+                              </div>
+                              <div
+                                class="col-10 d-flex justify-content-start p-0 my-auto"
+                              >
+                                <span class="text-left pl-3">{{
+                                  itemDescription.title
+                                }}</span>
+                              </div>
+                              <div
+                                class="col-1 justify-content-end p-0 my-auto"
+                              >
+                                <div
+                                  class="rounded-circle pink lighten-3 justify-content-center question-size"
+                                  [mdbTooltip]="itemDescription.description"
+                                  placement="left"
+                                  triggers="hover:click:touchstart"
+                                  container="body"
+                                >
+                                  <i class="fa fa-question text-white"></i>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- /.description items -->
+                    </div>
+                  </div>
+                </div>
+                <!-- /.description -->
+
+                <div class="container-fluid mt-3">
+                  <div class="row justify-content-md-center align-items-center">
+                    <div class="col col-md-12 list-group pr-0">
+                      <div
+                        *ngFor="let typeContact of consultation.typesContact"
+                        class="list-group-item list-group-item-action waves-light"
+                        mdbWavesEffect
+                      >
+                        <div class="row">
+                          <div class="col-5 d-flex justify-content-end">
+                            <span>{{ typeContact.title }}</span>
+                          </div>
+                          <div class="col-2 justify-content-center">
+                            <i [class]="typeContact.ico"></i>
+                          </div>
+                          <div class="col-5 d-flex justify-content-start">
+                            <span>{{ typeContact.price }}</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div
+                        class="list-group-item list-group-item-action waves-light mt-3"
+                        mdbWavesEffect
+                      >
+                        <div class="row">
+                          <div class="col-5 d-flex justify-content-end">
+                            <span>Время</span>
+                          </div>
+                          <div class="col-2 justify-content-center">
+                            <i class="far fa-clock"></i>
+                          </div>
+                          <div class="col-5 d-flex justify-content-start">
+                            <span>{{ consultation.time }}</span>
+                          </div>
+                        </div>
+                      </div>
+                      <button
+                        mdbBtn
+                        class="m-0 mt-3"
+                        type="button"
+                        color="danger"
+                        outline="true"
+                        mdbWavesEffect
+                        (click)="onScrolltoOrder(i)"
+                      >
+                        Записаться
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </mdb-card-body>
+              <!--/.Card content-->
+            </mdb-card>
+            <!--/.Card-->
+          </div>
+          <div *ngIf="(i + 1) % 3 == 0" class="w-100"></div>
+        </ng-container>
+        <!--/First column-->
+      </div>
+      <!-- /.ROW-->
+    </section>
+    <!-- /.Consultations section -->
+  </div>
+</div>
+<!-- /.Consultatios -->
