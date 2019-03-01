@@ -4,7 +4,8 @@
     <div class="row">
       <!--Grid column-->
       <div class="col-md-12 text-center my-5 wow fadeIn" data-wow-delay="0.3s">
-        <h2 class="h1 font-bold mb-5">Запись Онлайн</h2>
+        <h2 class="h2 font-bold mb-5">Запись Онлайн</h2>
+        <h3 *ngIf="!slides.length" class="h3 font-bold mb-5">Свободных мест нет</h3>
         <mdb-carousel
           [isControls]="true"
           [colorStyle]="'pink lighten-3'"
