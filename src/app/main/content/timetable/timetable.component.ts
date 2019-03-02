@@ -46,7 +46,7 @@ export class TimetableComponent implements OnInit {
   constructor(private mainService: MainService, private router: Router) {
     this.setTimeNowTimeZone(); // set correct TimeZone And Now global date
     this.mainService.getDataFromDatabase('daytable').subscribe(result => {
-      this.dayTable = this.onFilterDates(<DayTable[]>result); // filter dates from today to next days
+      this.dayTable = this.onFilterDates(<DayTable[]>result, 4); // filter dates from today to next days (second value - days)
       this.changeCountSlides(); // count slides to timetable from width display
       this.mainService.yesImLoaded(); // send flag that a component is loaded
     });
@@ -98,7 +98,7 @@ export class TimetableComponent implements OnInit {
     this.router.navigate(['/blank']);
   }
 
-  onFilterDates(dates: DayTable[]) {
-    return dates.filter(res => moment(moment.now()).isBefore(res.date));
+  onFilterDates(dates: DayTable[], days: number) {
+    return dates.filter(res => moment(moment.now()).add(days, 'days').isBefore(res.date));
   }
 }
