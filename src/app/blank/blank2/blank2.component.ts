@@ -39,7 +39,10 @@ export class Blank2Component implements OnInit {
   onSubmit() {
     const postData = this.onPrepareFormToSend(); // Prepare Object with data from FormGroup to Send
     const obSendToApi = this.serviceBlank.onSendOrderToApi(postData);
-    const obSendToEmail = this.serviceBlank.onSendOrderToEmail(postData, 2); // 2 - indx of consultation
+    const obSendToEmail = this.serviceBlank.onSendOrderToEmail(
+      postData,
+      this.parent.typeBlank.indexOf(this.parent.currentBlank) + 1
+    ); // indx of consultation
 
     if (!this.isSending) {
       this.isSending = true;
@@ -49,6 +52,7 @@ export class Blank2Component implements OnInit {
           this.isSending = false;
           this.isSended = true;
           this.isSendError = false;
+          this.serviceBlank.onClearLocalStorage(); // remove steps from order
           console.log('SUCCESS');
         },
         e => {

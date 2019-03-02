@@ -43,6 +43,11 @@ export class BlankService {
       .pipe(map(result => result.body));
   }
 
+  // Clear all information from localStorage (about 'select', date order)
+  public onClearLocalStorage() {
+    localStorage.clear();
+  }
+
   /* ------------- General Functions to Forms ---------------- */
   // Move text-cursor when reach mask '/' in Date
   // input HTMLInputElement - Any => need modify HTMLInputElement (add custom property)
