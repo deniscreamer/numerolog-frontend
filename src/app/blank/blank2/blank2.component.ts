@@ -4,7 +4,6 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { BlankService } from '../blank.service';
 import { MaskPipe } from 'ngx-mask';
 import { BlankComponent } from '../blank.component';
-import { delay } from 'rxjs/operators';
 import { combineLatest } from 'rxjs';
 
 @Component({

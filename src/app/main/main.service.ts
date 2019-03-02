@@ -1,5 +1,5 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { MenuItem } from './header/menu.modal';
 
@@ -60,6 +60,24 @@ export class MainService {
         observe: 'response',
       })
       .pipe(map(result => result.body));
+  }
+
+  public onSendQuestionToApi(value: Object) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json'
+      })
+    };
+    return this.http.post(`${AppSettings.API_ENDPOINT}/questions`, JSON.stringify(value), httpOptions);
+  }
+
+  public onSendQuestionToEmail(value: Object) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json'
+      })
+    };
+    return this.http.post(`${AppSettings.API_ENDPOINT}/sendquestion`, JSON.stringify(value), httpOptions);
   }
 
   // Scroll View to 'id' from 'menuItems'

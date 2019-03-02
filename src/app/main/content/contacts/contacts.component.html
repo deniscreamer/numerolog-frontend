@@ -82,13 +82,23 @@
             </div>
             <!--Grid row-->
             <div class="text-center text-md-right mb-3">
-              <button class="btn btn-pink btn-rounded waves-effect waves-light" type="submit"
-              [disabled]="!formContact.valid"
-                >Отправить</button
+              <div
+                *ngIf="isSending"
+                class="spinner-grow spinner-grow-sm text-danger"
+                role="status"
               >
+                <span class="sr-only">Loading...</span>
+              </div>
+              <button
+                class="btn btn-pink btn-rounded waves-effect waves-light"
+                type="submit"
+                [disabled]="!formContact.valid"
+                #buttonBySend
+              >
+                Отправить
+              </button>
             </div>
           </form>
-
         </div>
         <!--Grid column-->
 
@@ -101,7 +111,9 @@
                 target="_blank"
               >
                 <i class="fab fa-instagram fa-2x mb-1 pink-text"></i>
-                <p><u class="text-dark">{{ contacts.instagram.name }}</u></p>
+                <p>
+                  <u class="text-dark">{{ contacts.instagram.name }}</u>
+                </p>
               </a>
             </li>
 
@@ -111,7 +123,9 @@
                 target="_blank"
               >
                 <i class="fab fa-whatsapp fa-2x pink-text mb-1"></i>
-                <p><u class="text-dark">{{ contacts.whatsapp.name }}</u></p>
+                <p>
+                  <u class="text-dark">{{ contacts.whatsapp.name }}</u>
+                </p>
               </a>
             </li>
 
