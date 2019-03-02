@@ -5,7 +5,6 @@ import { Subscription, combineLatest } from 'rxjs';
 import { MaskPipe } from 'ngx-mask';
 import { BlankService } from '../blank.service';
 import { BlankComponent } from '../blank.component';
-import { delay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-blank1',
