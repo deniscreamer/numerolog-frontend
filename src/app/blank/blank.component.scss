@@ -1,16 +1,45 @@
-@import "../../../projects/ng-uikit-pro-standard/src/lib/assets/scss/bootstrap/bootstrap";
-@import "../../../src/assets/fonts/fonts";
-html {
-    font-size: 1rem !important;
+@import '../../../projects/ng-uikit-pro-standard/src/lib/assets/scss/bootstrap/bootstrap';
+@import '../../../src/assets/fonts/fonts';
+
+@include media-breakpoint-up(lg) {
+  html {
+    font-size: 1rem;
+  }
+}
+
+@include media-breakpoint-down(lg) {
+  html {
+    font-size: 0.98rem;
+  }
+}
+
+@include media-breakpoint-down(md) {
+  html {
+    font-size: 0.95rem;
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  html {
+    font-size: 0.9rem;
+  }
 }
 
 .btn {
-    text-transform: none;
+  text-transform: none;
 }
 
 .div-footer {
-    position: absolute;
-    width: 100%;
-    bottom: 0;
-    background-color: rgba(145, 145, 145, 0.1)
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  background-color: rgba(145, 145, 145, 0.1);
+}
+
+.view-page_blank {
+  background: url('../../assets/second.jpg') no-repeat center center;
+  background-size: cover;
+  height: 100%;
+  /* Fallback for browsers that do not support Custom Properties */
+  height: calc(var(--vh, 1%) * 100);
 }

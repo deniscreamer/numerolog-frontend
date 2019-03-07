@@ -95,10 +95,14 @@ export class TimetableComponent implements OnInit {
     localStorage.setItem('date', date.toString());
     localStorage.setItem('time_at', time_at.toString());
     localStorage.setItem('time_to', time_to.toString());
-    this.router.navigate(['/blank']);
+    window.location.href = '/blank'; // becouse We will need reload to default bootstrap
   }
 
   onFilterDates(dates: DayTable[], days: number) {
-    return dates.filter(res => moment(moment.now()).add(days, 'days').isBefore(res.date));
+    return dates.filter(res =>
+      moment(moment.now())
+        .add(days, 'days')
+        .isBefore(res.date)
+    );
   }
 }
