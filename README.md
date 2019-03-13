@@ -1,28 +1,26 @@
-# Numerolog
+# Welcome
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.2.2.
+![enter image description here](http://pix.my/jOy5z3)
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Description
 
-## Code scaffolding
+Business website application for a parapsychologist numerologist. The main audience is 90% women. The application has functions: animation, a display of free places to order, an online order, order forms with full controllers in the fields, a small goods store, a feedback form. Form data is sent to own API and Email. For administration, there is an another application for iOS and Android devices.
+The application is full adaptive for Desktop, Laptop, Mobile devices.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Technologies
 
-## Build
+ - HTML / CSS3 / SCSS
+ - JS / TypeScript / Angular 7.x.x 
+ - Webpack
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Modules
 
-## Running unit tests
+ - MDBootstrap
+ - RxJS
+ - Moment
+ - NgxMask
+ - NgxParallax
+ - WOWjs
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
-# frontend-numerolog
+##
