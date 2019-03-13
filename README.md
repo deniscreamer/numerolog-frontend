@@ -1,6 +1,6 @@
 # Welcome
 
-![enter image description here](http://pix.my/jOy5z3)
+![screenshot](http://pix.my/7zOLGu)
 
 
 ## Description
