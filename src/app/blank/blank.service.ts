@@ -3,36 +3,39 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { map } from 'rxjs/internal/operators/map';
 
-import * as emailjs from 'emailjs-com';
 import { AppSettings } from '../shared/global.constants';
+import { FormControl } from '@angular/forms';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class BlankService {
-
-  constructor(private http: HttpClient) { }
-
-  public onSendEmail(value: Object, typeConsultation: number) {
-    return emailjs.send('mail_ru', typeConsultation.toString(), value, 'user_rua5mjOcoyOo08rwkLxsG');
-  }
+  constructor(private http: HttpClient) {}
 
   public onSendOrderToApi(value: Object) {
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type':  'application/json'
-      })
+        'Content-Type': 'application/json',
+      }),
     };
-    return this.http.post(`${AppSettings.API_ENDPOINT}/orders`, JSON.stringify(value), httpOptions);
+    return this.http.post(
+      `${AppSettings.API_ENDPOINT}/orders`,
+      JSON.stringify(value),
+      httpOptions
+    );
   }
 
   public onSendOrderToEmail(value: Object, type: number) {
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type':  'application/json'
-      })
+        'Content-Type': 'application/json',
+      }),
     };
-    return this.http.post(`${AppSettings.API_ENDPOINT}/sendorder/${type.toString()}`, JSON.stringify(value), httpOptions);
+    return this.http.post(
+      `${AppSettings.API_ENDPOINT}/sendorder/${type.toString()}`,
+      JSON.stringify(value),
+      httpOptions
+    );
   }
 
   public getDataFromDatabase(type: string) {
@@ -67,7 +70,11 @@ export class BlankService {
     input.previousSelection = currentSelection; // Modify Input Element => Add property Previous Position
   }
 
-  onFocusInput(input: HTMLInputElement, touched: Boolean, underChar: any) {
+  public onFocusInput(
+    input: HTMLInputElement,
+    touched: Boolean,
+    underChar: any
+  ) {
     const indexFirst = input.value.indexOf(underChar);
     setTimeout(() => {
       if (indexFirst === -1) {
@@ -80,7 +87,11 @@ export class BlankService {
     }, 100);
   }
 
-  private setSelectionRange(input: any, selectionStart: any, selectionEnd: any) {
+  private setSelectionRange(
+    input: any,
+    selectionStart: any,
+    selectionEnd: any
+  ) {
     // console.log(input);
     if (input.setSelectionRange) {
       input.focus();
@@ -92,5 +103,26 @@ export class BlankService {
       range.moveStart('character', selectionStart);
       range.select();
     }
+  }
+
+  // Global Customs Controlls for Forms
+  public fioControl(control: FormControl) {
+    const valueFio = control.value.split(' ');
+
+    if (valueFio.length < 2) {
+      return {
+        countWordsError: true,
+      };
+    }
+
+    for (let i = 0; i < valueFio.length; i++) {
+      if (/[^-А-ЯA-Z\x27а-яa-z]/.test(valueFio[i])) {
+        return {
+          patternFioError: true,
+        };
+      }
+    }
+
+    return null;
   }
 }

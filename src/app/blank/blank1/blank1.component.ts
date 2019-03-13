@@ -82,7 +82,7 @@ export class Blank1Component implements OnInit, OnDestroy {
   onBuildForm(): FormGroup {
     return new FormGroup({
       fio: new FormControl('', {
-        validators: [Validators.required, this.fioControl],
+        validators: [Validators.required, this.serviceBlank.fioControl],
       }),
       fio_chbox: new FormControl(false),
       fio_now: new FormControl(''),
@@ -101,7 +101,7 @@ export class Blank1Component implements OnInit, OnDestroy {
       birth_chbox_realdate: new FormControl(''),
       birth_chbox_realtime: new FormControl(''),
       fromCity: new FormControl('', {
-        validators: [Validators.required, this.fioControl],
+        validators: [Validators.required, this.serviceBlank.fioControl],
       }),
       clinic_die_chbox: new FormControl(false),
       clinic_die_date: new FormControl(''),
@@ -230,26 +230,6 @@ export class Blank1Component implements OnInit, OnDestroy {
         this.showMaskClinicDie = true;
         break;
     }
-  }
-
-  fioControl(control: FormControl) {
-    const valueFio = control.value.split(' ');
-
-    if (valueFio.length < 2) {
-      return {
-        countWordsError: true,
-      };
-    }
-
-    for (let i = 0; i < valueFio.length; i++) {
-      if (/[^-А-ЯA-Z\x27а-яa-z]/.test(valueFio[i])) {
-        return {
-          patternFioError: true,
-        };
-      }
-    }
-
-    return null;
   }
 
   familiaControlNow(control: FormControl) {

@@ -1,3 +1,345 @@
-<p>
-  в разработке
-</p>
+<div class="row justify-content-start p-3 m-3 bg-white shadow-lg rounded">
+  <form class="container-fluid p-1" [formGroup]="destinyForm" (ngSubmit)="onSubmit()">
+    <div class="form-group col col-12 p-0 pb-2 border-bottom border-light">
+      <label><i class="fa fa-user"></i> Фамилия Имя Отчество (ФИО) Ребёнка</label>
+      <input type="text" class="form-control" [ngClass]="{
+          'is-invalid':
+            destinyForm.get('fio').invalid && destinyForm.get('fio').touched,
+          'is-valid':
+            destinyForm.get('fio').valid && destinyForm.get('fio').touched
+        }"
+        placeholder="Сидоров Дмитрий Иванович" formControlName="fio" />
+      <div *ngIf="destinyForm.get('fio').invalid && destinyForm.get('fio').touched" class="alert alert-danger mt-1 p-2 text-center text-danger"
+        role="alert">
+        <small>
+          <span *ngIf="destinyForm.get('fio').errors['required']">Пожалуйста, введите Ваше ФИО</span>
+          <span *ngIf="
+              !destinyForm.get('fio').errors['required'] &&
+              destinyForm.get('fio').errors['countWordsError']
+            ">Пожалуйста,
+            введите еще Имя и Отчество</span>
+          <span *ngIf="
+              !destinyForm.get('fio').errors['required'] &&
+              destinyForm.get('fio').errors['patternFioError']
+            ">Пожалуйста,
+            введите корректно Ваше ФИО</span>
+        </small>
+      </div>
+      <small class="form-text text-muted">Фамилия на момент рождения (как в свидетельстве о рождении)</small>
+    </div>
+    <div class="form-group col col-12 p-0 pb-2 border-bottom border-light">
+      <div class="form-row">
+        <div class="col-12">
+          <label><i class="far fa-calendar-alt"></i> Дата рождения ребёнка по паспорту
+          </label>
+        </div>
+        <div class="col col-7">
+          <div class="input-group mb-2">
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <i class="far fa-calendar-alt"></i>
+              </div>
+            </div>
+            <input [ngClass]="{
+                'is-invalid':
+                  destinyForm.get('birth_date').invalid &&
+                  destinyForm.get('birth_date').touched,
+                'is-valid':
+                  destinyForm.get('birth_date').valid &&
+                  destinyForm.get('birth_date').touched
+              }"
+              #inputBirthDate type="text" formControlName="birth_date" class="form-control" placeholder="01/01/1980"
+              mask="00/00/0000" [showMaskTyped]="showMaskDateBirth ? true : false" (focus)="
+                onFocusInput(
+                  inputBirthDate,
+                  destinyForm.get('birth_date').touched,
+                  '_'
+                )
+              "
+              (input)="onMoveSelectionCursor(inputBirthDate)" />
+          </div>
+        </div>
+        <div class="col col-5">
+          <div class="input-group mb-2">
+            <div class="input-group-prepend">
+              <div class="input-group-text"><i class="far fa-clock"></i></div>
+            </div>
+            <input [ngClass]="{
+                'is-invalid':
+                  destinyForm.get('birth_time').invalid &&
+                  destinyForm.get('birth_time').touched,
+                'is-valid':
+                  destinyForm.get('birth_time').valid &&
+                  destinyForm.get('birth_time').touched
+              }"
+              #inputBirthTime type="text" formControlName="birth_time" class="form-control" placeholder="00:00" mask="00:00"
+              [showMaskTyped]="showMaskTimeBirth ? true : false" (focus)="
+                onFocusInput(
+                  inputBirthTime,
+                  destinyForm.get('birth_time').touched,
+                  ':'
+                )
+              "
+              (input)="onMoveSelectionCursor(inputBirthTime)" />
+          </div>
+        </div>
+        <div class="col col-12">
+          <div *ngIf="
+              destinyForm.get('birth_date').invalid &&
+              destinyForm.get('birth_date').touched
+            "
+            class="alert alert-danger mt-0 p-2 text-center text-danger" role="alert">
+            <small>
+              <span *ngIf="destinyForm.get('birth_date').invalid">Пожалуйста, введите корректно дату и время рождения</span>
+            </small>
+          </div>
+          <small class="form-text text-muted">Если время неизвестно, то не указывайте</small>
+        </div>
+      </div>
+    </div>
+    <div class="form-group col col-12 p-0 pb-2 border-bottom border-light">
+      <label><i class="fa fa-user"></i> Фамилия Имя Отчество (ФИО) Мамы</label>
+      <input type="text" class="form-control" [ngClass]="{
+          'is-invalid':
+            destinyForm.get('fio_parent_one').invalid && destinyForm.get('fio_parent_one').touched,
+          'is-valid':
+            destinyForm.get('fio_parent_one').valid && destinyForm.get('fio_parent_one').touched
+        }"
+        placeholder="Сидорова Татьяна Васильевна" formControlName="fio_parent_one" />
+      <div *ngIf="destinyForm.get('fio_parent_one').invalid && destinyForm.get('fio_parent_one').touched" class="alert alert-danger mt-1 p-2 text-center text-danger"
+        role="alert">
+        <small>
+          <span *ngIf="destinyForm.get('fio_parent_one').errors['required']">Пожалуйста, введите Ваше ФИО</span>
+          <span *ngIf="
+              !destinyForm.get('fio_parent_one').errors['required'] &&
+              destinyForm.get('fio_parent_one').errors['countWordsError']
+            ">Пожалуйста,
+            введите еще Имя и Отчество</span>
+          <span *ngIf="
+              !destinyForm.get('fio_parent_one').errors['required'] &&
+              destinyForm.get('fio_parent_one').errors['patternfioError']
+            ">Пожалуйста,
+            введите корректно Ваше ФИО</span>
+        </small>
+      </div>
+      <small class="form-text text-muted">Фамилия на момент рождения (Девичья)</small>
+    </div>
+    <div class="form-group col col-12 p-0 pb-2 border-bottom border-light">
+      <div class="form-row">
+        <div class="col-12">
+          <label><i class="far fa-calendar-alt"></i> Дата рождения Мамы по паспорту
+          </label>
+        </div>
+        <div class="col col-7">
+          <div class="input-group mb-2">
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <i class="far fa-calendar-alt"></i>
+              </div>
+            </div>
+            <input [ngClass]="{
+                'is-invalid':
+                  destinyForm.get('birth_date_parent_one').invalid &&
+                  destinyForm.get('birth_date_parent_one').touched,
+                'is-valid':
+                  destinyForm.get('birth_date_parent_one').valid &&
+                  destinyForm.get('birth_date_parent_one').touched
+              }"
+              #inputBirthDateParentOne type="text" formControlName="birth_date_parent_one" class="form-control"
+              placeholder="01/01/1980" mask="00/00/0000" [showMaskTyped]="showMaskDateBirthParentOne ? true : false"
+              (focus)="
+                onFocusInput(
+                  inputBirthDateParentOne,
+                  destinyForm.get('birth_date_parent_one').touched,
+                  '_'
+                )
+              "
+              (input)="onMoveSelectionCursor(inputBirthDateParentOne)" />
+          </div>
+        </div>
+        <div class="col col-5">
+          <div class="input-group mb-2">
+            <div class="input-group-prepend">
+              <div class="input-group-text"><i class="far fa-clock"></i></div>
+            </div>
+            <input [ngClass]="{
+                'is-invalid':
+                  destinyForm.get('birth_time_parent_one').invalid &&
+                  destinyForm.get('birth_time_parent_one').touched,
+                'is-valid':
+                  destinyForm.get('birth_time_parent_one').valid &&
+                  destinyForm.get('birth_time_parent_one').touched
+              }"
+              #inputBirthTimeParentOne type="text" formControlName="birth_time_parent_one" class="form-control"
+              placeholder="00:00" mask="00:00" [showMaskTyped]="showMaskTimeBirthParentOne ? true : false" (focus)="
+                onFocusInput(
+                  inputBirthTimeParentOne,
+                  destinyForm.get('birth_time_parent_one').touched,
+                  ':'
+                )
+              "
+              (input)="onMoveSelectionCursor(inputBirthTimeParentOne)" />
+          </div>
+        </div>
+        <div class="col col-12">
+          <div *ngIf="
+              destinyForm.get('birth_date_parent_one').invalid &&
+              destinyForm.get('birth_date_parent_one').touched
+            "
+            class="alert alert-danger mt-0 p-2 text-center text-danger" role="alert">
+            <small>
+              <span *ngIf="destinyForm.get('birth_date_parent_one').invalid">Пожалуйста, введите корректно дату и время
+                рождения</span>
+            </small>
+          </div>
+          <small class="form-text text-muted">Если время неизвестно, то не указывайте</small>
+        </div>
+      </div>
+    </div>
+    <div class="form-group col col-12 p-0 pb-2 border-bottom border-light">
+      <label><i class="fa fa-user"></i> Фамилия Имя Отчество (ФИО) Папы</label>
+      <input type="text" class="form-control" [ngClass]="{
+          'is-invalid':
+            destinyForm.get('fio_parent_two').invalid && destinyForm.get('fio_parent_two').touched,
+          'is-valid':
+            destinyForm.get('fio_parent_two').valid && destinyForm.get('fio_parent_two').touched
+        }"
+        placeholder="Сидоров Иван Сергеевич" formControlName="fio_parent_two" />
+      <div *ngIf="destinyForm.get('fio_parent_two').invalid && destinyForm.get('fio_parent_two').touched" class="alert alert-danger mt-1 p-2 text-center text-danger"
+        role="alert">
+        <small>
+          <span *ngIf="destinyForm.get('fio_parent_two').errors['required']">Пожалуйста, введите Ваше ФИО</span>
+          <span *ngIf="
+              !destinyForm.get('fio_parent_two').errors['required'] &&
+              destinyForm.get('fio_parent_two').errors['countWordsError']
+            ">Пожалуйста,
+            введите еще Имя и Отчество</span>
+          <span *ngIf="
+              !destinyForm.get('fio_parent_two').errors['required'] &&
+              destinyForm.get('fio_parent_two').errors['patternfioError']
+            ">Пожалуйста,
+            введите корректно Ваше ФИО</span>
+        </small>
+      </div>
+      <small class="form-text text-muted">Фамилия на момент рождения</small>
+    </div>
+    <div class="form-group col col-12 p-0 pb-2 border-bottom border-light">
+      <div class="form-row">
+        <div class="col-12">
+          <label><i class="far fa-calendar-alt"></i> Дата рождения Папы по паспорту
+          </label>
+        </div>
+        <div class="col col-7">
+          <div class="input-group mb-2">
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <i class="far fa-calendar-alt"></i>
+              </div>
+            </div>
+            <input [ngClass]="{
+                'is-invalid':
+                  destinyForm.get('birth_date_parent_two').invalid &&
+                  destinyForm.get('birth_date_parent_two').touched,
+                'is-valid':
+                  destinyForm.get('birth_date_parent_two').valid &&
+                  destinyForm.get('birth_date_parent_two').touched
+              }"
+              #inputBirthDateParentTwo type="text" formControlName="birth_date_parent_two" class="form-control"
+              placeholder="01/01/1980" mask="00/00/0000" [showMaskTyped]="showMaskDateBirthParentTwo ? true : false"
+              (focus)="
+                onFocusInput(
+                  inputBirthDateParentTwo,
+                  destinyForm.get('birth_date_parent_two').touched,
+                  '_'
+                )
+              "
+              (input)="onMoveSelectionCursor(inputBirthDateParentTwo)" />
+          </div>
+        </div>
+        <div class="col col-5">
+          <div class="input-group mb-2">
+            <div class="input-group-prepend">
+              <div class="input-group-text"><i class="far fa-clock"></i></div>
+            </div>
+            <input [ngClass]="{
+                'is-invalid':
+                  destinyForm.get('birth_time_parent_two').invalid &&
+                  destinyForm.get('birth_time_parent_two').touched,
+                'is-valid':
+                  destinyForm.get('birth_time_parent_two').valid &&
+                  destinyForm.get('birth_time_parent_two').touched
+              }"
+              #inputBirthTimeParentTwo type="text" formControlName="birth_time_parent_two" class="form-control"
+              placeholder="00:00" mask="00:00" [showMaskTyped]="showMaskTimeBirthParentTwo ? true : false" (focus)="
+                onFocusInput(
+                  inputBirthTimeParentTwo,
+                  destinyForm.get('birth_time_parent_two').touched,
+                  ':'
+                )
+              "
+              (input)="onMoveSelectionCursor(inputBirthTimeParentTwo)" />
+          </div>
+        </div>
+        <div class="col col-12">
+          <div *ngIf="
+              destinyForm.get('birth_date_parent_two').invalid &&
+              destinyForm.get('birth_date_parent_two').touched
+            "
+            class="alert alert-danger mt-0 p-2 text-center text-danger" role="alert">
+            <small>
+              <span *ngIf="destinyForm.get('birth_date_parent_two').invalid">Пожалуйста, введите корректно дату и время
+                рождения</span>
+            </small>
+          </div>
+          <small class="form-text text-muted">Если время неизвестно, то не указывайте</small>
+        </div>
+      </div>
+    </div>
+    <div class="form-group col col-12 p-0 pb-2">
+      <label><i class="far fa-address-card"></i> Данные для связи с Вами</label>
+      <input [ngClass]="{
+          'is-invalid':
+            destinyForm.get('contacts').invalid &&
+            destinyForm.get('contacts').touched,
+          'is-valid':
+            destinyForm.get('contacts').valid &&
+            destinyForm.get('contacts').touched
+        }"
+        formControlName="contacts" type="text" class="form-control" placeholder="Номер Whatsapp или Instagram" />
+      <div *ngIf="
+          destinyForm.get('contacts').invalid &&
+          destinyForm.get('contacts').touched
+        "
+        class="alert alert-danger mt-1 p-2 text-center text-danger" role="alert">
+        <small>
+          <span *ngIf="destinyForm.get('contacts').errors['required']">Пожалуйста, введите ваши контакты для связи</span>
+        </small>
+      </div>
+    </div>
+    <div class="col col-12 p-0 justify-content-center text-center ">
+      <button #buttonSubmit type="submit" class="btn btn-primary w-50 text-center" [disabled]="destinyForm.invalid || isSending || isSended || isSendError"
+        [ngClass]="{
+          'btn-success': !isSending && isSended,
+          'btn-danger': !isSending && isSendError
+        }">
+        <span *ngIf="!isSending && isSendError">Ошибка</span>
+        <span *ngIf="!isSending && isSended">Отправлено</span>
+        <span *ngIf="!isSending && !isSended && !isSendError">Отправить</span>
+        <span *ngIf="isSending">
+          <div class="spinner-border spinner-border-sm text-light" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </span>
+      </button>
+      <div *ngIf="destinyForm.invalid && !isSendError" class="alert alert-success mt-3" role="alert">
+        Пожалуйста, введите все данные и нажмите кнопку "Отправить"
+      </div>
+      <div *ngIf="isSended" class="alert alert-success mt-3" role="alert">
+        Спасибо, Ваша анкета успешно отправлена.<br />Можете закрыть данное окно
+      </div>
+      <div *ngIf="isSendError" class="alert alert-danger mt-3" role="alert">
+        Произошла ошибка отправки, обратитесь лично к нумерологу Валерии
+      </div>
+    </div>
+  </form>
+</div>

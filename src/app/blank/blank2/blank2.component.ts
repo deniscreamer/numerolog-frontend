@@ -66,7 +66,6 @@ export class Blank2Component implements OnInit {
 
   private onPrepareFormToSend() {
     const formObject = {};
-    const dateRead = new Date();
     formObject['fio'] = this.destinyForm.get('fio').value;
     formObject['fio_partner'] = this.destinyForm.get('fio_partner').value;
     formObject['birth_date'] = this.maskpipe.transform(
@@ -106,10 +105,10 @@ export class Blank2Component implements OnInit {
   onBuildForm() {
     return new FormGroup({
       fio: new FormControl('', {
-        validators: [Validators.required, this.fioControl],
+        validators: [Validators.required, this.serviceBlank.fioControl],
       }),
       fio_partner: new FormControl('', {
-        validators: [Validators.required, this.fioControl],
+        validators: [Validators.required, this.serviceBlank.fioControl],
       }),
       birth_date: new FormControl('', {
         validators: [
@@ -164,24 +163,4 @@ export class Blank2Component implements OnInit {
     }
   }
 
-  // custom Validator for FIO
-  fioControl(control: FormControl) {
-    const valueFio = control.value.split(' ');
-
-    if (valueFio.length < 2) {
-      return {
-        countWordsError: true,
-      };
-    }
-
-    for (let i = 0; i < valueFio.length; i++) {
-      if (/[^-А-ЯA-Z\x27а-яa-z]/.test(valueFio[i])) {
-        return {
-          patternFioError: true,
-        };
-      }
-    }
-
-    return null;
-  }
 }
