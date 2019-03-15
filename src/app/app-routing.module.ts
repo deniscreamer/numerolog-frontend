@@ -7,7 +7,8 @@ const routes: Routes = [
   { path: 'анкета', redirectTo: '/blank', pathMatch: 'full' },
   { path: 'предназначение', redirectTo: '/blank/1', pathMatch: 'full' },
   { path: 'взаимоотношения', redirectTo: '/blank/2', pathMatch: 'full' },
-  { path: 'детская', redirectTo: '/blank/3', pathMatch: 'full' }
+  { path: 'детская', redirectTo: '/blank/3', pathMatch: 'full' },
+  { path: 'оплата', redirectTo: '/blank/pay', pathMatch: 'full' }
 ];
 
 @NgModule({

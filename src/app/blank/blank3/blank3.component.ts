@@ -1,8 +1,10 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { combineLatest } from 'rxjs/internal/observable/combineLatest';
+import { combineLatest } from 'rxjs';
+
 import { BlankService } from '../blank.service';
 import { BlankComponent } from '../blank.component';
+
 import { MaskPipe } from 'ngx-mask';
 
 @Component({
@@ -52,8 +54,9 @@ export class Blank3Component implements OnInit {
           this.isSending = false;
           this.isSended = true;
           this.isSendError = false;
-          this.serviceBlank.onClearLocalStorage(); // remove steps from order
+          this.serviceBlank.onOrderLocalStorage(); // remove steps from order
           console.log('SUCCESS');
+          this.serviceBlank.onRedirectToPay(); // redirect to Pay Page
         },
         e => {
           this.isSending = false;

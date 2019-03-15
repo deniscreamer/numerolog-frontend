@@ -1,0 +1,10 @@
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+.mat-expansion-panel-header-description,
+.mat-expansion-panel-header-title {
+  flex-grow: unset !important;
+}
+
+.mat-expansion-indicator::after {
+  vertical-align: unset !important;
+}

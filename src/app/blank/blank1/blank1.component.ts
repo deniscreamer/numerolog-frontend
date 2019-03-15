@@ -2,9 +2,10 @@ import { Component, OnInit, OnDestroy, ViewChild, Inject } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Subscription, combineLatest } from 'rxjs';
 
-import { MaskPipe } from 'ngx-mask';
 import { BlankService } from '../blank.service';
 import { BlankComponent } from '../blank.component';
+
+import { MaskPipe } from 'ngx-mask';
 
 @Component({
   selector: 'app-blank1',
@@ -138,8 +139,9 @@ export class Blank1Component implements OnInit, OnDestroy {
           this.isSending = false;
           this.isSended = true;
           this.isSendError = false;
-          this.serviceBlank.onClearLocalStorage(); // remove steps from order
+          this.serviceBlank.onOrderLocalStorage(); // ordered
           console.log('SUCCESS');
+          this.serviceBlank.onRedirectToPay(); // redirect to Pay Page
         },
         e => {
           this.isSending = false;

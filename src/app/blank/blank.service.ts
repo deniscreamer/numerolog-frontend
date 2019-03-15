@@ -1,16 +1,17 @@
 import { Injectable } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
-import { map } from 'rxjs/internal/operators/map';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { AppSettings } from '../shared/global.constants';
-import { FormControl } from '@angular/forms';
+
+import { map } from 'rxjs/internal/operators/map';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BlankService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   public onSendOrderToApi(value: Object) {
     const httpOptions = {
@@ -49,6 +50,11 @@ export class BlankService {
   // Clear all information from localStorage (about 'select', date order)
   public onClearLocalStorage() {
     localStorage.clear();
+  }
+
+  // Add flag when ordered
+  public onOrderLocalStorage() {
+    localStorage.setItem('ordered', '1');
   }
 
   /* ------------- General Functions to Forms ---------------- */
@@ -124,5 +130,11 @@ export class BlankService {
     }
 
     return null;
+  }
+
+  public onRedirectToPay() {
+    setTimeout(() => {
+      this.router.navigate(['/blank/pay']);
+    }, 600);
   }
 }

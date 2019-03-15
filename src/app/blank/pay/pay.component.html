@@ -1,0 +1,83 @@
+<div class="row justify-content-center p-3 mt-3 mb-3 mx-2 bg-white shadow-lg rounded text-center">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="alert alert-primary mb-3" role="alert">
+        <span *ngIf="sent">Я приняла Вашу анкету! </span>Пожалуйста, оплатите <strong>1000 ₽</strong> в течении 24
+        часов, иначе Ваша бронь будет снята.
+      </div>
+      <mat-accordion class="w-100">
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <img src="../../../assets/payments/sberbank.png">
+            </mat-panel-title>
+            <mat-panel-description class="my-auto">
+              Сбербанк
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+
+          <div class="alert alert-success text-left mb-1" role="alert">
+            Карта: <strong>5469 3003 5389 1556</strong> <i class="far fa-copy float-right pt-1" (click)="copyInBuffer('5469300353891556')"></i>
+          </div>
+          <div class="alert alert-success text-left mb-1" role="alert">
+            Номер: <strong>+7 (938) 485-08-85</strong> <i class="far fa-copy float-right pt-1" (click)="copyInBuffer('+79384850885')"></i>
+          </div>
+          <div class="alert alert-success text-left mb-2" role="alert">
+            Крикунова Валерия Сергеевна
+          </div>
+          <div class="alert alert-primary mb-1" role="alert">
+            В описании перевода напишите свою фамилию.
+          </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <img src="../../../assets/payments/qiwi.png">
+            </mat-panel-title>
+            <mat-panel-description class="my-auto">
+              Qiwi
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <div class="alert alert-success text-left mb-2" role="alert">
+            Номер: <strong>+7 (938) 485-08-85</strong> <i class="far fa-copy float-right pt-1" (click)="copyInBuffer('+79384850885')"></i>
+          </div>
+          <div class="alert alert-primary mb-1" role="alert">
+            В "Сообщение получателю" напишите свою фамилию.
+          </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <img src="../../../assets/payments/yandexmoney.png">
+            </mat-panel-title>
+            <mat-panel-description class="my-auto">
+              Яндекс.Деньги
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <div class="alert alert-success text-left mb-2" role="alert">
+            Кошелек: <strong>4100 1785 5065 844</strong> <i class="far fa-copy float-right pt-1" (click)="copyInBuffer('410017855065844')"></i>
+          </div>
+          <div class="alert alert-primary mb-1" role="alert">
+            В "Сообщение получателю" напишите свою фамилию.
+          </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <img src="../../../assets/payments/paypal.png">
+            </mat-panel-title>
+            <mat-panel-description class="my-auto">
+              PayPal
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <div class="alert alert-success text-left mb-2" role="alert">
+            <strong>numerolog_valeria@mail.ru</strong> <i class="far fa-copy float-right pt-1" (click)="copyInBuffer('numerolog_valeria@mail.ru')"></i>
+          </div>
+          <div class="alert alert-primary mb-1" role="alert">
+            В "Сообщение получателю" напишите свою фамилию.
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+  </div>
+</div>

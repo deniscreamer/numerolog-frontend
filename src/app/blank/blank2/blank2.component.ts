@@ -1,10 +1,11 @@
-import { Component, OnInit, Host, Inject } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-
-import { BlankService } from '../blank.service';
-import { MaskPipe } from 'ngx-mask';
-import { BlankComponent } from '../blank.component';
 import { combineLatest } from 'rxjs';
+
+import { BlankComponent } from '../blank.component';
+import { BlankService } from '../blank.service';
+
+import { MaskPipe } from 'ngx-mask';
 
 @Component({
   selector: 'app-blank2',
@@ -51,8 +52,9 @@ export class Blank2Component implements OnInit {
           this.isSending = false;
           this.isSended = true;
           this.isSendError = false;
-          this.serviceBlank.onClearLocalStorage(); // remove steps from order
+          this.serviceBlank.onOrderLocalStorage(); // ordered
           console.log('SUCCESS');
+          this.serviceBlank.onRedirectToPay(); // redirect to Pay Page
         },
         e => {
           this.isSending = false;
@@ -162,5 +164,4 @@ export class Blank2Component implements OnInit {
         break;
     }
   }
-
 }
