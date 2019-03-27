@@ -159,6 +159,14 @@ export class Blank3Component implements OnInit {
     return formObject;
   }
 
+  // auto add "+" to input phone field in form
+  onSetPlasToPhone(input: HTMLInputElement, touched: Boolean) {
+    if (!touched) {
+      input.value = '+';
+      this.serviceBlank.onFocusInput(input, touched, '+');
+    }
+  }
+
   onFocusInput(input: HTMLInputElement, touched: Boolean, underChar: any) {
     this.setShowMask(input.getAttribute('formcontrolname'));
     this.serviceBlank.onFocusInput(input, touched, underChar);

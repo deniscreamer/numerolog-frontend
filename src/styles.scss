@@ -6,6 +6,11 @@
 @import '../projects/ng-uikit-pro-standard/src/lib/assets/scss/pro/_variables';
 @import '../projects/ng-uikit-pro-standard/src/lib/assets/scss/angular/pro/_progress';
 @import './reset-browser.scss'; // reset browser (padding margin in html body...)
+
+html {
+  overflow-x: hidden !important;
+}
+
 .carousel-indicators {
   width: 100% !important;
   height: 0px !important;

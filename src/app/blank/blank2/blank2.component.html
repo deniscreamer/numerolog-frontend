@@ -1,96 +1,53 @@
-<div
-  class="row justify-content-start p-3 m-3 bg-white shadow-lg rounded"
->
-  <form
-    class="container-fluid p-1"
-    [formGroup]="destinyForm"
-    (ngSubmit)="onSubmit()"
-  >
+<div class="row justify-content-start p-3 m-3 bg-white shadow-lg rounded">
+  <form class="container-fluid p-1" [formGroup]="destinyForm" (ngSubmit)="onSubmit()">
     <div class="form-group col col-12 p-0 pb-2 border-bottom border-light">
       <label><i class="fa fa-user"></i> Фамилия Имя Отчество (ФИО)</label>
-      <input
-        type="text"
-        class="form-control"
-        [ngClass]="{
+      <input type="text" class="form-control" [ngClass]="{
           'is-invalid':
             destinyForm.get('fio').invalid && destinyForm.get('fio').touched,
           'is-valid':
             destinyForm.get('fio').valid && destinyForm.get('fio').touched
-        }"
-        placeholder="Иванова Татьяна Александровна"
-        formControlName="fio"
-      />
-      <div
-        *ngIf="destinyForm.get('fio').invalid && destinyForm.get('fio').touched"
-        class="alert alert-danger mt-1 p-2 text-center text-danger"
-        role="alert"
-      >
+        }" placeholder="Иванова Татьяна Александровна" formControlName="fio" />
+      <div *ngIf="destinyForm.get('fio').invalid && destinyForm.get('fio').touched"
+        class="alert alert-danger mt-1 p-2 text-center text-danger" role="alert">
         <small>
-          <span *ngIf="destinyForm.get('fio').errors['required']"
-            >Пожалуйста, введите Ваше ФИО</span
-          >
-          <span
-            *ngIf="
+          <span *ngIf="destinyForm.get('fio').errors['required']">Пожалуйста, введите Ваше ФИО</span>
+          <span *ngIf="
               !destinyForm.get('fio').errors['required'] &&
               destinyForm.get('fio').errors['countWordsError']
-            "
-            >Пожалуйста, введите еще Имя и Отчество</span
-          >
-          <span
-            *ngIf="
+            ">Пожалуйста, введите еще Имя и Отчество</span>
+          <span *ngIf="
               !destinyForm.get('fio').errors['required'] &&
               destinyForm.get('fio').errors['patternFioError']
-            "
-            >Пожалуйста, введите корректно Ваше ФИО</span
-          >
+            ">Пожалуйста, введите корректно Ваше ФИО</span>
         </small>
       </div>
-      <small class="form-text text-muted"
-        >Фамилия на момент рождения (Девичья)</small
-      >
+      <small class="form-text text-muted">Фамилия на момент рождения (Девичья)</small>
     </div>
     <div class="form-group col col-12 p-0 pb-2 border-bottom border-light">
       <label><i class="fa fa-user"></i> ФИО партнера</label>
-      <input
-        type="text"
-        class="form-control"
-        [ngClass]="{
+      <input type="text" class="form-control" [ngClass]="{
           'is-invalid':
             destinyForm.get('fio_partner').invalid &&
             destinyForm.get('fio_partner').touched,
           'is-valid':
             destinyForm.get('fio_partner').valid &&
             destinyForm.get('fio_partner').touched
-        }"
-        placeholder="Сидоров Сергей Николаевич"
-        formControlName="fio_partner"
-      />
-      <div
-        *ngIf="
+        }" placeholder="Сидоров Сергей Николаевич" formControlName="fio_partner" />
+      <div *ngIf="
           destinyForm.get('fio_partner').invalid &&
           destinyForm.get('fio_partner').touched
-        "
-        class="alert alert-danger mt-1 p-2 text-center text-danger"
-        role="alert"
-      >
+        " class="alert alert-danger mt-1 p-2 text-center text-danger" role="alert">
         <small>
-          <span *ngIf="destinyForm.get('fio_partner').errors['required']"
-            >Пожалуйста, введите Ваше ФИО</span
-          >
-          <span
-            *ngIf="
+          <span *ngIf="destinyForm.get('fio_partner').errors['required']">Пожалуйста, введите Ваше ФИО</span>
+          <span *ngIf="
               !destinyForm.get('fio_partner').errors['required'] &&
               destinyForm.get('fio_partner').errors['countWordsError']
-            "
-            >Пожалуйста, введите еще Имя и Отчество</span
-          >
-          <span
-            *ngIf="
+            ">Пожалуйста, введите еще Имя и Отчество</span>
+          <span *ngIf="
               !destinyForm.get('fio_partner').errors['required'] &&
               destinyForm.get('fio_partner').errors['patternFioError']
-            "
-            >Пожалуйста, введите корректно Ваше ФИО</span
-          >
+            ">Пожалуйста, введите корректно Ваше ФИО</span>
         </small>
       </div>
       <small class="form-text text-muted">Фамилия на момент рождения</small>
@@ -98,8 +55,7 @@
     <div class="form-group col col-12 p-0 pb-2 border-bottom border-light">
       <div class="form-row">
         <div class="col-12">
-          <label
-            ><i class="far fa-calendar-alt"></i> Ваша Дата рождения по паспорту
+          <label><i class="far fa-calendar-alt"></i> Ваша Дата рождения по паспорту
           </label>
         </div>
         <div class="col col-7">
@@ -109,31 +65,21 @@
                 <i class="far fa-calendar-alt"></i>
               </div>
             </div>
-            <input
-              [ngClass]="{
+            <input [ngClass]="{
                 'is-invalid':
                   destinyForm.get('birth_date').invalid &&
                   destinyForm.get('birth_date').touched,
                 'is-valid':
                   destinyForm.get('birth_date').valid &&
                   destinyForm.get('birth_date').touched
-              }"
-              #inputBirthDate
-              type="text"
-              formControlName="birth_date"
-              class="form-control"
-              placeholder="01/01/1980"
-              mask="00/00/0000"
-              [showMaskTyped]="showMaskDateBirth ? true : false"
-              (focus)="
+              }" #inputBirthDate type="text" formControlName="birth_date" class="form-control" placeholder="01/01/1980"
+              mask="00/00/0000" [showMaskTyped]="showMaskDateBirth ? true : false" (focus)="
                 onFocusInput(
                   inputBirthDate,
                   destinyForm.get('birth_date').touched,
                   '_'
                 )
-              "
-              (input)="onMoveSelectionCursor(inputBirthDate)"
-            />
+              " (input)="onMoveSelectionCursor(inputBirthDate)" />
           </div>
         </div>
         <div class="col col-5">
@@ -141,59 +87,41 @@
             <div class="input-group-prepend">
               <div class="input-group-text"><i class="far fa-clock"></i></div>
             </div>
-            <input
-              [ngClass]="{
+            <input [ngClass]="{
                 'is-invalid':
                   destinyForm.get('birth_time').invalid &&
                   destinyForm.get('birth_time').touched,
                 'is-valid':
                   destinyForm.get('birth_time').valid &&
                   destinyForm.get('birth_time').touched
-              }"
-              #inputBirthTime
-              type="text"
-              formControlName="birth_time"
-              class="form-control"
-              placeholder="00:00"
-              mask="00:00"
-              [showMaskTyped]="showMaskTimeBirth ? true : false"
-              (focus)="
+              }" #inputBirthTime type="text" formControlName="birth_time" class="form-control" placeholder="00:00"
+              mask="00:00" [showMaskTyped]="showMaskTimeBirth ? true : false" (focus)="
                 onFocusInput(
                   inputBirthTime,
                   destinyForm.get('birth_time').touched,
                   ':'
                 )
-              "
-              (input)="onMoveSelectionCursor(inputBirthTime)"
-            />
+              " (input)="onMoveSelectionCursor(inputBirthTime)" />
           </div>
         </div>
         <div class="col col-12">
-          <div
-            *ngIf="
+          <div *ngIf="
               destinyForm.get('birth_date').invalid &&
               destinyForm.get('birth_date').touched
-            "
-            class="alert alert-danger mt-0 p-2 text-center text-danger"
-            role="alert"
-          >
+            " class="alert alert-danger mt-0 p-2 text-center text-danger" role="alert">
             <small>
-              <span *ngIf="destinyForm.get('birth_date').invalid"
-                >Пожалуйста, введите корректно дату и время рождения</span
-              >
+              <span *ngIf="destinyForm.get('birth_date').invalid">Пожалуйста, введите корректно дату и время
+                рождения</span>
             </small>
           </div>
-          <small class="form-text text-muted"
-            >Если время неизвестно, то не указывайте</small
-          >
+          <small class="form-text text-muted">Если время неизвестно, то не указывайте</small>
         </div>
       </div>
     </div>
     <div class="form-group col col-12 p-0 pb-2 border-bottom border-light">
       <div class="form-row">
         <div class="col-12">
-          <label
-            ><i class="far fa-calendar-alt"></i> Дата рождения Партнера по
+          <label><i class="far fa-calendar-alt"></i> Дата рождения Партнера по
             паспорту
           </label>
         </div>
@@ -204,31 +132,22 @@
                 <i class="far fa-calendar-alt"></i>
               </div>
             </div>
-            <input
-              [ngClass]="{
+            <input [ngClass]="{
                 'is-invalid':
                   destinyForm.get('birth_date_partner').invalid &&
                   destinyForm.get('birth_date_partner').touched,
                 'is-valid':
                   destinyForm.get('birth_date_partner').valid &&
                   destinyForm.get('birth_date_partner').touched
-              }"
-              #inputBirthDatePartner
-              type="text"
-              formControlName="birth_date_partner"
-              class="form-control"
-              placeholder="01/01/1980"
-              mask="00/00/0000"
-              [showMaskTyped]="showMaskDateBirthPartner ? true : false"
+              }" #inputBirthDatePartner type="text" formControlName="birth_date_partner" class="form-control"
+              placeholder="01/01/1980" mask="00/00/0000" [showMaskTyped]="showMaskDateBirthPartner ? true : false"
               (focus)="
                 onFocusInput(
                   inputBirthDatePartner,
                   destinyForm.get('birth_date_partner').touched,
                   '_'
                 )
-              "
-              (input)="onMoveSelectionCursor(inputBirthDatePartner)"
-            />
+              " (input)="onMoveSelectionCursor(inputBirthDatePartner)" />
           </div>
         </div>
         <div class="col col-5">
@@ -236,129 +155,83 @@
             <div class="input-group-prepend">
               <div class="input-group-text"><i class="far fa-clock"></i></div>
             </div>
-            <input
-              [ngClass]="{
+            <input [ngClass]="{
                 'is-invalid':
                   destinyForm.get('birth_time_partner').invalid &&
                   destinyForm.get('birth_time_partner').touched,
                 'is-valid':
                   destinyForm.get('birth_time_partner').valid &&
                   destinyForm.get('birth_time_partner').touched
-              }"
-              #inputBirthTimePartner
-              type="text"
-              formControlName="birth_time_partner"
-              class="form-control"
-              placeholder="00:00"
-              mask="00:00"
-              [showMaskTyped]="showMaskTimeBirthPartner ? true : false"
-              (focus)="
+              }" #inputBirthTimePartner type="text" formControlName="birth_time_partner" class="form-control"
+              placeholder="00:00" mask="00:00" [showMaskTyped]="showMaskTimeBirthPartner ? true : false" (focus)="
                 onFocusInput(
                   inputBirthTimePartner,
                   destinyForm.get('birth_time_partner').touched,
                   ':'
                 )
-              "
-              (input)="onMoveSelectionCursor(inputBirthTimePartner)"
-            />
+              " (input)="onMoveSelectionCursor(inputBirthTimePartner)" />
           </div>
         </div>
         <div class="col col-12">
-          <div
-            *ngIf="
+          <div *ngIf="
               destinyForm.get('birth_date_partner').invalid &&
               destinyForm.get('birth_date_partner').touched
-            "
-            class="alert alert-danger mt-0 p-2 text-center text-danger"
-            role="alert"
-          >
+            " class="alert alert-danger mt-0 p-2 text-center text-danger" role="alert">
             <small>
-              <span *ngIf="destinyForm.get('birth_date_partner').invalid"
-                >Пожалуйста, введите корректно дату и время рождения</span
-              >
+              <span *ngIf="destinyForm.get('birth_date_partner').invalid">Пожалуйста, введите корректно дату и время
+                рождения</span>
             </small>
           </div>
-          <small class="form-text text-muted"
-            >Если время неизвестно, то не указывайте</small
-          >
+          <small class="form-text text-muted">Если время неизвестно, то не указывайте</small>
         </div>
       </div>
     </div>
     <div class="form-group col col-12 p-0 pb-2 border-bottom border-light">
       <div class="custom-control custom-checkbox pt-1">
-        <input
-          formControlName="married"
-          type="checkbox"
-          class="custom-control-input"
-          id="customCheck1"
-        />
-        <label class="custom-control-label" for="customCheck1"
-          >Вы и партнер состоите в браке</label
-        >
+        <input formControlName="married" type="checkbox" class="custom-control-input" id="customCheck1" />
+        <label class="custom-control-label" for="customCheck1">Вы и партнер состоите в браке</label>
       </div>
     </div>
     <div class="form-group col col-12 p-0 pb-2">
-      <label><i class="far fa-address-card"></i> Данные для связи с Вами</label>
-      <input
-        [ngClass]="{
+      <label><i class="far fa-address-card"></i> Номер телефона для связи (Whatsapp)</label>
+      <input #inputPhone [ngClass]="{
           'is-invalid':
             destinyForm.get('contacts').invalid &&
             destinyForm.get('contacts').touched,
           'is-valid':
             destinyForm.get('contacts').valid &&
             destinyForm.get('contacts').touched
-        }"
-        formControlName="contacts"
-        type="text"
-        class="form-control"
-        placeholder="Номер Whatsapp или Instagram"
-      />
-      <div
-        *ngIf="
+        }" formControlName="contacts" type="text" class="form-control" placeholder="+79991112233"
+        (focus)="onSetPlasToPhone(inputPhone, destinyForm.get('contacts').touched)" />
+      <div *ngIf="
           destinyForm.get('contacts').invalid &&
           destinyForm.get('contacts').touched
-        "
-        class="alert alert-danger mt-1 p-2 text-center text-danger"
-        role="alert"
-      >
+        " class="alert alert-danger mt-1 p-2 text-center text-danger" role="alert">
         <small>
-          <span *ngIf="destinyForm.get('contacts').errors['required']"
-            >Пожалуйста, введите ваши контакты для связи</span
-          >
+          <span *ngIf="destinyForm.get('contacts').errors['required']">Пожалуйста, введите ваши контакты для
+            связи</span>
         </small>
       </div>
     </div>
     <div class="col col-12 p-0 justify-content-center text-center ">
-      <button
-        #buttonSubmit
-        type="submit"
-        class="btn btn-primary w-50 text-center"
-        [disabled]="destinyForm.invalid || isSending || isSended || isSendError"
-        [ngClass]="{
+      <button #buttonSubmit type="submit" class="btn btn-primary w-50 text-center"
+        [disabled]="destinyForm.invalid || isSending || isSended || isSendError" [ngClass]="{
           'btn-success': !isSending && isSended,
           'btn-danger': !isSending && isSendError
-        }"
-      >
+        }">
         <span *ngIf="!isSending && isSendError">Ошибка</span>
         <span *ngIf="!isSending && isSended">Отправлено</span>
         <span *ngIf="!isSending && !isSended && !isSendError">Отправить</span>
-        <span *ngIf="isSending"
-          ><div
-            class="spinner-border spinner-border-sm text-light"
-            role="status"
-          >
+        <span *ngIf="isSending">
+          <div class="spinner-border spinner-border-sm text-light" role="status">
             <span class="sr-only">Loading...</span>
-          </div></span
-        >
+          </div>
+        </span>
       </button>
-      <div
-        *ngIf="destinyForm.invalid && !isSendError"
-        class="alert alert-success mt-3"
-        role="alert"
-      >
+      <div *ngIf="destinyForm.invalid && !isSendError" class="alert alert-success mt-3" role="alert">
         Пожалуйста, введите все данные и нажмите кнопку "Отправить"
       </div>
-<!--       <div *ngIf="isSended" class="alert alert-success mt-3" role="alert">
+      <!--       <div *ngIf="isSended" class="alert alert-success mt-3" role="alert">
         Спасибо, Ваша анкета успешно отправлена.<br />Можете закрыть данное окно
       </div> -->
       <div *ngIf="isSendError" class="alert alert-danger mt-3" role="alert">
