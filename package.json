@@ -37,6 +37,7 @@
     "moment": "^2.24.0",
     "moment-timezone": "^0.5.23",
     "ng-uikit-pro-standard": "file:ng-uikit-pro-standard-7.4.0.tgz",
+    "ng-yandex-metrika": "^3.0.2",
     "ngx-mask": "^7.4.0",
     "ngx-parallax": "^4.0.0",
     "rxjs": "~6.4.0",
