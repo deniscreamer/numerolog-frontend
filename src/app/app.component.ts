@@ -10,8 +10,6 @@ import { filter } from 'rxjs/operators';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'numerolog';
-
   constructor(
     private metrika: Metrika,
     private router: Router,
