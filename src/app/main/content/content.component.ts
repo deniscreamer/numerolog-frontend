@@ -13,6 +13,6 @@ export class ContentComponent implements OnInit {
   constructor(private mainService: MainService) {}
 
   ngOnInit() {
-    this.mainService.countLoadedComponents = this.components.nativeElement.childElementCount;
+    this.mainService.countLoadedComponents = this.components.nativeElement.childElementCount + 1; // 1 - it's header component
   }
 }
