@@ -6,6 +6,7 @@ import { BlankComponent } from '../blank.component';
 import { BlankService } from '../blank.service';
 
 import { MaskPipe } from 'ngx-mask';
+import { Metrika } from 'ng-yandex-metrika';
 
 @Component({
   selector: 'app-blank2',
@@ -29,7 +30,8 @@ export class Blank2Component implements OnInit {
   constructor(
     @Inject(BlankComponent) private parent: BlankComponent,
     private maskpipe: MaskPipe,
-    private serviceBlank: BlankService
+    private serviceBlank: BlankService,
+    private metrika: Metrika
   ) {
     this.destinyForm = this.onBuildForm(); // generate reactive form with controls and validators
   }
@@ -52,6 +54,7 @@ export class Blank2Component implements OnInit {
           this.isSending = false;
           this.isSended = true;
           this.isSendError = false;
+          this.metrika.fireEvent('anketa'); // send event to yandex.metrika
           this.serviceBlank.onOrderLocalStorage(); // ordered
           console.log('SUCCESS');
           this.serviceBlank.onRedirectToPay(); // redirect to Pay Page

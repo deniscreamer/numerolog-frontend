@@ -6,6 +6,7 @@ import { BlankService } from '../blank.service';
 import { BlankComponent } from '../blank.component';
 
 import { MaskPipe } from 'ngx-mask';
+import { Metrika } from 'ng-yandex-metrika';
 
 @Component({
   selector: 'app-blank1',
@@ -40,7 +41,8 @@ export class Blank1Component implements OnInit, OnDestroy {
   constructor(
     @Inject(BlankComponent) private parent: BlankComponent,
     private maskpipe: MaskPipe,
-    private serviceBlank: BlankService
+    private serviceBlank: BlankService,
+    private metrika: Metrika
   ) {}
 
   ngOnInit() {
@@ -139,6 +141,7 @@ export class Blank1Component implements OnInit, OnDestroy {
           this.isSending = false;
           this.isSended = true;
           this.isSendError = false;
+          this.metrika.fireEvent('anketa'); // send event to yandex.metrika
           this.serviceBlank.onOrderLocalStorage(); // ordered
           console.log('SUCCESS');
           this.serviceBlank.onRedirectToPay(); // redirect to Pay Page

@@ -9,6 +9,7 @@ import { ParallaxConfig } from 'ngx-parallax';
 import { map } from 'rxjs/operators';
 import { combineLatest } from 'rxjs';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Metrika } from 'ng-yandex-metrika';
 
 @Component({
   selector: 'app-header',
@@ -30,7 +31,8 @@ export class HeaderComponent implements OnInit {
   constructor(
     private mainService: MainService,
     private http: HttpClient,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private metrika: Metrika
   ) {
     this.menuItems = this.mainService.menuItems;
   }
@@ -72,5 +74,10 @@ export class HeaderComponent implements OnInit {
 
   detectInstagramBrowser() {
     return navigator.userAgent.match(/Instagram/i);
+  }
+
+  onNavigateToInstagram() {
+    this.metrika.fireEvent('instagram');
+    window.open('https://www.instagram.com/numerolog_valeria', '_blank');
   }
 }
